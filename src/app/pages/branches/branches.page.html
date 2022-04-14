@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{client_name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="editClient()">
+        <ion-icon name="create" class="icInfoStatusbar"></ion-icon>
+      </ion-button>
+      <ion-button (click)="createBranch()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer">
+
+  <section class="branchContainer">
+    <ion-label class="lblBranches">Branches</ion-label>
+    <ion-label class="instruction1">Click on <ion-icon name="information-circle-outline" class="info"></ion-icon> for company base details</ion-label>
+    <ion-card class="branchCard" *ngFor="let br of branchList">
+      
+    <ion-label class="lblBranchName">{{br.name}} <ion-icon name="create" class="icBranchEdit" (click)="editBranch(br)"></ion-icon></ion-label>
+      <!-- <ion-label class="lblAddressHeader">Address</ion-label> -->
+      <ion-label class="lblAddress">{{br.name}}, {{br.city}}, {{br.state}}, {{br.country}}, {{br.pincode}}</ion-label>
+
+      <section class="machineControllContainer">
+        <ion-button shape="round" class="btnMachine" (click)="createMachines(br)">View Machines</ion-button>
+      </section>
+
+      
+    </ion-card>
+    <ion-label class="lblAddNewBranch" (click)="createBranch()"><ion-icon name="add" class="iconAdd"></ion-icon> Add new branch</ion-label>
+  </section>
+
+</ion-content>

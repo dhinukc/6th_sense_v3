@@ -1,0 +1,82 @@
+<ion-header mode="md">
+  <ion-toolbar mode="md" color="primary">
+    <ion-title>History</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button mode="md">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button mode="md">
+        <ion-icon name="ios-funnel"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer">
+  <section class="cardContainer">
+    <ion-card class="historyCard" *ngFor="let his of history; let i = index">
+      <section class="leftSection">
+        <section class="dataBox">
+          <ion-label class="lblTitle">Credited To</ion-label>
+          <ion-label class="lblValue">{{his.vpa}}</ion-label>
+        </section>
+        <section class="dataBox">
+          <ion-label class="lblTitle">Date</ion-label>
+          <ion-label class="lblValue">{{his.creationDate | date: 'shortTime'}} on {{his.creationDate | date: 'MMM dd yyyy'}}</ion-label>
+        </section>
+        <!-- <section class="dataBox">
+          <ion-label class="lblTitle">Product</ion-label>
+          <ion-label class="lblValue">Britania buiscut</ion-label>
+        </section> -->
+      </section>
+
+      <section [class.statusSection]="his.status == 'success'" [class.statusSection2]="his.status == 'failed'">
+        <ion-label class="lblAmount">&#8377;{{his.price}}</ion-label>
+        <ion-icon name="md-checkmark-circle" [class.icSuccess]="his.status == 'success'" [class.icSuccess2]="his.status == 'failed'">
+        </ion-icon>
+        <ion-label class="lblStatus">{{his.status}}</ion-label>
+
+        <!-- <section class="moreButtonContainer" (click)="expand(i)">
+          <ion-icon name="ios-arrow-down" class="icMore"></ion-icon>
+          <ion-label class="lblMore">More</ion-label>
+        </section> -->
+      </section>
+    </ion-card>
+
+
+
+    <!-- <ion-card class="detailCard" id="detailCard{{i}}">
+      <section class="leftSection">
+        <section class="dataBox">
+          <ion-label class="lblTitle">Date</ion-label>
+          <ion-label class="lblValue">18-02-2020</ion-label>
+        </section>
+        <section class="dataBox">
+          <ion-label class="lblTitle">Company</ion-label>
+          <ion-label class="lblValue">Accenture</ion-label>
+        </section>
+        <section class="dataBox">
+          <ion-label class="lblTitle">Branch</ion-label>
+          <ion-label class="lblValue">electronic city</ion-label>
+        </section>
+      </section>
+      <section class="leftSection">
+        <section class="dataBox">
+          <ion-label class="lblTitle">Time</ion-label>
+          <ion-label class="lblValue">04:05 PM</ion-label>
+        </section>
+        <section class="dataBox">
+          <ion-label class="lblTitle">Transaction ID</ion-label>
+          <ion-label class="lblValue">AD125HFG4589</ion-label>
+        </section>
+        <section class="dataBox">
+          <ion-label class="lblTitle">Transaction Method</ion-label>
+          <ion-label class="lblValue">UPI</ion-label>
+        </section>
+      </section>
+    </ion-card> -->
+  </section>
+</ion-content>

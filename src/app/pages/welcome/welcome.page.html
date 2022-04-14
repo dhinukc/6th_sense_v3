@@ -1,0 +1,119 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title> -->
+    <section class="toolbarSection">
+      <div class="toobarLeft" (click)='profilePopup($event)'>
+        <!-- <ion-icon name="qr-scanner" class="icScanner"></ion-icon>
+        <ion-label class="lblScan">Scan QR Code</ion-label> -->
+        <div class="roundProfileDiv">
+          <img src="../../../assets/img/user.png" class="imgUserProfile">
+        </div>
+        <ion-icon name="arrow-dropdown" class="icMore"></ion-icon>
+      </div>
+      <div class="toobarRight">
+        <!-- <ion-icon name="more" class="icMore"></ion-icon> -->
+      </div>
+    </section>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer" scroll='false' fullscreen>
+
+  <section class="container">
+    <section class="headerSection">
+      <img src="../../assets/img/logo2.png" class="imgJP">
+      <!-- <ion-label class="lblJP">SUR<span class="f">f</span>ON</ion-label> -->
+      <img class="bgImage" src="../../../assets/img/bg2.png">
+    </section>
+
+    <section class="SlideContainer">
+      <ion-card class="cardContainer">
+        <!-- <ion-label class="lblInstruction">Instructions</ion-label> -->
+
+        <div style="width: 90%; display: flex; flex-direction: column; align-items: center; padding-top: 10px;" *ngIf="paymentType == 'QR_CODE'">
+          <ion-label style="margin-bottom: 10px; font-size: 15px;"><b>Make the payment by any of the bleow options:</b></ion-label>
+          <section class="scanBtnContainer">
+            <ion-button shape='round' class="scanBtn" (click)="scanQRcode()">
+              <ion-label class="lblScan">QR Code</ion-label>
+            </ion-button>
+  
+            <ion-label>&nbsp; OR &nbsp;</ion-label>
+  
+            <ion-button shape='round' class="scanBtn" (click)="changePaymentType()">
+              <ion-label class="lblScan">Machine ID</ion-label>
+            </ion-button>
+          </section>
+        </div>
+
+        <div style="width: 80%; display: flex; flex-direction: column; align-items: center;" *ngIf="paymentType != 'QR_CODE'">
+
+          <div style="width: 100%; padding: 10px 0px 10px 0px;">
+            <ion-icon name="arrow-back" style="font-size: 25px;" (click)="changePaymentType()"></ion-icon>
+          </div>
+
+          <section class="scanBtnContainer">
+            <!-- <ion-button shape='round' class="scanBtn" (click)="scanQRcode()">
+              <img src="../../../assets/img/scan.png" class="imgScanQr">
+              <ion-label class="lblScan">Scan QR Code</ion-label>
+            </ion-button> -->
+            <input class="machinIdInput" type="number" placeholder="Enter machine code here" [(ngModel)]="machineId">
+            <ion-button shape='round' class="scanBtn" (click)="payByMachineId()" disabled="{{(machineId?.toString()).length > 2 ? 'false' : 'true'}}">
+              <ion-label class="lblScan">PAY</ion-label>
+            </ion-button>
+          </section>
+  
+          <div style="width: 100%; font-style: italic; color: rgb(196, 196, 196); display: flex; justify-content: center;"><p><span style="color: red">*</span> Enter <span class="spanHighlight">Machine ID</span> pasted on the machine and select <span class="spanHighlight">PAY</span> and complete the payment </p></div>
+        </div>
+
+        <ion-slides class="slides" #slides pager="true">
+          <ion-slide>
+            <section class="slide_1">
+              <img src="../../assets/img/slide_4.png" class="imgSlide">
+              <ion-label class="slideTitle"><b>STEP 1:</b> Make Payment</ion-label>
+              <ion-label class="lblDescription2" style="margin-top: 10px;">Make the payment from your registered  app.
+              </ion-label>
+              <section class="paymentLogoContainer">
+                <div class="gPay">
+                  <img src="../../../assets/img/gpay.png">
+                </div>
+                <div class="phonePe">
+                  <img src="../../../assets/img/phonpe.png">
+                </div>
+                <div class="morePay">
+                  <ion-label>More</ion-label>
+                </div>
+              </section>
+              <ion-label class="lblDescription2" style="margin-bottom: 20px; margin-top: 5px;"><b class="spanHighlight" style="font-style: italic;">Instruction: </b> <span style="font-style: italic;">On payment failure product will not be dispensed</span></ion-label>
+            </section>
+          </ion-slide>
+          <ion-slide>
+            <section class="slide_1">
+              <img src="../../assets/img/slide_2.png" class="imgSlide">
+              <ion-label class="slideTitle"><b>STEP 2:</b> Complete payment</ion-label>
+              <ion-label class="lblDescription">Make sure you completed the payment process successfully. <br> <b class="spanHighlight" style="font-style: italic;">Instruction: </b> <span style="font-style: italic;">On "No Stock"  payment will be failed</span>
+              </ion-label>
+            </section>
+          </ion-slide>
+          <ion-slide>
+            <section class="slide_1">
+              <img src="../../assets/img/slide_3.png" class="imgSlide">
+              <ion-label class="slideTitle"><b>STEP 3:</b> Collect the product</ion-label>
+              <ion-label class="lblDescription">Collect the product from the machine after a beep sound. <br> <b class="spanHighlight" style="font-style: italic;">Instruction: </b> <span style="font-style: italic;">Do not touch the machine</span></ion-label>
+            </section>
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+
+    </section>
+
+    <!-- <section class="btnSection">
+    <ion-button shape="round" class="btnNext" (click)="getStart()">Get Started</ion-button>
+  </section> -->
+  </section>
+
+</ion-content>

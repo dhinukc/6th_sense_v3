@@ -1,0 +1,89 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer" scroll='false' fullscreen>
+
+  <section class="container">
+    <section class="headerSection">
+      <img src="../../assets/img/logo2.png" class="imgJP">
+      <!-- <ion-label class="lblJP" id="lblJP">SUR<span class="f">f</span>ON</ion-label> -->
+      <img class="bgImage" src="../../../assets/img/bg2.png">
+    </section>
+
+    <section class="SlideContainer">
+      <ion-card class="cardContainer" scrollY="true">
+
+        <!-- ###### Clients Part ###### -->
+
+        <section class="titleSection">
+          <ion-label>Clients</ion-label>
+        </section>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size-xs="3" size-sm="6" size-md="6" size-lg="6" size-xl="6" offset="0" *ngFor="let cl of clients; let i = index">
+              <section class="clientContainer" (click)="getBranches(cl)">
+                <div class="circleDiv" id="circleDiv{{i}}">
+                  <ion-label>{{cl.letter}}</ion-label>
+                </div>
+                <ion-label class="lblClientName">{{cl.name}}</ion-label>
+              </section>
+            </ion-col>
+            <ion-col size-xs="3" size-sm="6" size-md="6" size-lg="6" size-xl="6" offset="0">
+              <section class="clientContainer" (click)="createClients()">
+                <div class="circleDiv2">
+                  <ion-icon name="add" class="iconAdd"></ion-icon>
+                </div>
+                <ion-label class="lblClientName">Add New</ion-label>
+              </section>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+        <!-- ###### Dealers Part ###### -->
+
+        <section class="titleSection1">
+          <ion-label>Dealers</ion-label>
+        </section>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size-xs="3" size-sm="6" size-md="6" size-lg="6" size-xl="6" offset="0" *ngFor="let dl of dealers; let i = index">
+              <section class="clientContainer" (click)="getBranches(dl)">
+                <div class="circleDiv" id="circleDealerDiv{{i}}">
+                  <ion-label>{{dl.letter}}</ion-label>
+                </div>
+                <ion-label class="lblClientName">{{dl.name}}</ion-label>
+              </section>
+            </ion-col>
+            <ion-col size-xs="3" size-sm="6" size-md="6" size-lg="6" size-xl="6" offset="0">
+              <section class="clientContainer">
+                <div class="circleDiv2">
+                  <ion-icon name="add" class="iconAdd"></ion-icon>
+                </div>
+                <ion-label class="lblClientName">Add New</ion-label>
+              </section>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+       
+      </ion-card>
+
+    </section>
+
+
+  </section>
+
+</ion-content>

@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Create new client</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer">
+
+  <section class="container">
+    <section class="taskHeaderSection">
+      <ion-label class="lblTask">Company basic details</ion-label>
+    </section>
+
+    <ion-card class="baseDetailcard">
+      <ion-item class="inputItem">
+        <ion-label position="floating">Company name</ion-label>
+        <ion-input placeholder="Enter company name" class="input" autofocus="true" [(ngModel)]="company_name"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input placeholder="Enter company email" class="input" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">GST No.</ion-label>
+        <ion-input placeholder="Enter GST number" class="input" [(ngModel)]="gst_no"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Contact person name</ion-label>
+        <ion-input placeholder="Enter contact person name" class="input" [(ngModel)]="contact_person"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Phone number</ion-label>
+        <ion-input placeholder="Enter phone number" class="input" [(ngModel)]="phone_no"></ion-input>
+      </ion-item>
+    </ion-card>
+
+
+    <section class="taskHeaderSection">
+      <ion-label class="lblTask">Branch details</ion-label>
+    </section>
+
+    <ion-card class="baseDetailcard">
+      <ion-item class="inputItem">
+        <ion-label position="floating">Branch name</ion-label>
+        <ion-input placeholder="Enter branch name" class="input" [(ngModel)]="branch_name"></ion-input>
+      </ion-item>
+      <!-- <ion-item class="inputItem">
+        <ion-label position="floating">Address 1</ion-label>
+        <ion-input placeholder="Enter address line 1" class="input"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Address 2</ion-label>
+        <ion-input placeholder="Enter address line 2" class="input"></ion-input>
+      </ion-item> -->
+      <ion-item class="inputItem">
+        <ion-label position="floating">City</ion-label>
+        <ion-input placeholder="Enter city" class="input" [(ngModel)]="city"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">State</ion-label>
+        <ion-input placeholder="Enter state" class="input" [(ngModel)]="state"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Country</ion-label>
+        <ion-input placeholder="Enter country" class="input" [(ngModel)]="country"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Pin code</ion-label>
+        <ion-input placeholder="Enter pin code" class="input" [(ngModel)]="pincode"></ion-input>
+      </ion-item>
+    </ion-card>
+
+
+    <section class="taskHeaderSection">
+      <ion-label class="lblTask">Bank details</ion-label>
+    </section>
+
+
+    <ion-card class="baseDetailcard">
+
+      <ion-item class="inputItem" lines='none'>
+        <ion-label class="lblToggle" slot="start">Activate UPI account</ion-label>
+        <ion-toggle slot="end" [(ngModel)]="activate"></ion-toggle>
+      </ion-item>
+     
+      <ion-item class="inputItem" *ngIf="activate">
+        <ion-label position="floating">Merchant ID</ion-label>
+        <ion-input placeholder="Enter merchant id" class="input" [(ngModel)]="merchant_id"></ion-input>
+      </ion-item>
+
+      <ion-item class="inputItem" *ngIf="activate">
+        <ion-label position="floating">Merchant name</ion-label>
+        <ion-input placeholder="Enter merchant name" class="input" [(ngModel)]="merchant_name"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <section class="btnContainer">
+      <ion-button shape="round" class="btnSubmit" (click)="register()">Create</ion-button>
+    </section>
+
+  </section>
+
+</ion-content>

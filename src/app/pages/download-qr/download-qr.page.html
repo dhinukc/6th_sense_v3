@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{machineStaticId}}{{middleZeros}}{{machine_id}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer">
+  <section class="container">
+    <section class="merchatContainer">
+      <div class="leftDiv">
+        <ion-radio checked="{{vpa_radio}}" (ionSelect)="selectMerchantOption('vpa')"></ion-radio>
+      </div>
+      <div class="rightDiv">
+        <ion-item>
+          <ion-input placeholder="Merchant Id" [(ngModel)]="vpa" readonly></ion-input>
+        </ion-item>
+      </div>
+    </section>
+
+    <section class="merchatContainer">
+      <div class="leftDiv">
+        <ion-radio checked="{{custome_vpa_radio}}" (ionSelect)="selectMerchantOption('custome_vpa')"></ion-radio>
+      </div>
+      <div class="rightDiv">
+        <ion-item>
+          <ion-input placeholder="Customize merchant ID" [(ngModel)]="custome_vpa" [readonly]="!custome_vpa_radio" (ionChange)="changeQR()"></ion-input>
+        </ion-item>
+      </div>
+    </section>
+
+    <ion-label class="lblInstrauction">Please give 'Storage' permission in app settings if it's not granded already to download QR code</ion-label>
+
+    <ngx-qrcode [qrc-value]="qr_value" qrc-class="bclass" qrc-errorCorrectionLevel="H" id="canvas"
+      [qrc-element-type]='elementType'></ngx-qrcode>
+
+    <ion-button class="downloadBtn" shape="round" (click)="downloadQR()">
+      <ion-icon name="download" class="icDownload"></ion-icon>
+      Download to gallery
+    </ion-button>
+  </section>
+</ion-content>

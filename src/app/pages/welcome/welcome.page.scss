@@ -1,0 +1,257 @@
+.mainContainer {
+    --overflow: hidden;
+}
+
+.toolbarSection {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.toobarLeft {
+    display: flex;
+    flex: 2;
+    justify-content: flex-start;
+    padding-left: 8px;
+    align-items: center;
+}
+
+.imgUserProfile{
+    width: 35px;
+    height: auto;
+}
+
+.icScanner {
+    margin-right: 10px;
+    color: orangered;
+    font-size: 22px;
+    //animation: blink 1s linear infinite;
+    font-weight: bold;
+}
+
+.lblScan {
+    animation: blink 1.5s linear infinite;
+}
+
+.toobarRight {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.icMore {
+    font-size: 22px;
+    color: gray;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.headerSection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 20%;
+    position: relative;
+}
+
+.imgJP {
+    //width: 13%;
+    width: 40%;
+    height: auto;
+    margin-bottom: 3vw;
+}
+
+.lblJP {
+    font-size: 3vw;
+    //position: absolute;
+    //top: 20px;
+    //left: 0;
+    //right: 0;
+    //width: 100%;
+    //text-align: center;
+    color: #6e7bf2;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.bgImage{
+    position: absolute;
+    bottom: 0;
+    opacity: 0.4;
+    margin-bottom: -40px;
+}
+
+.lblInstruction {
+    font-size: 3vw;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    color: rgb(142, 163, 177);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.f {
+    font-size: 30px;
+}
+
+.SlideContainer {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.cardContainer {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+    background: white;
+}
+
+.slides {
+    width: 100%;
+}
+
+.slide_1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.imgSlide {
+    width: 35vw;
+    height: auto;
+}
+
+.slideTitle {
+    margin-top: 2vw;
+    font-size: 5vw;
+}
+
+.lblDescription {
+    margin-top: 5vw;
+    font-size: 14px;
+    line-height: 20px;
+    color: gray;
+    margin-bottom: 5vw;
+    width: 90%;
+}
+
+.lblDescription2 {
+    font-size: 14px;
+    line-height: 20px;
+    color: gray;
+    width: 90%;
+}
+
+.spanHighlight {
+    //font-weight: bold;
+    color: rgb(241, 60, 28);
+}
+
+//   .btnSection{
+//     display: flex;
+//     width: 100%;
+//     justify-content: center;
+//     //margin-top: 10%;
+//     position: absolute;
+//     bottom: 50px;
+//     height: 10%;
+//     align-items: center;
+//   }
+
+.btnNext {
+    --background: rgb(129, 169, 53);
+}
+
+@keyframes blink {
+
+    /* 0%{opacity: 0;} */
+    25% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    75% {
+        opacity: .75;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.paymentLogoContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.gPay{
+    width: 10%;
+    border-radius: 50%;
+}
+
+.phonePe{
+    width: 10%;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.scanBtnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.machinIdInput{
+    width: 230px !important;
+    border: 2px solid orange;
+    border-radius: 20px;
+    height: 40px;
+    margin-right: 10px;
+    padding-left: 15px;
+}
+
+input {
+    border: none;
+}
+
+::placeholder {
+    color: rgb(190, 190, 190);
+    font-style: italic;
+}
+.imgScanQr{
+    width: 14%;
+    margin-right: 10px;
+}
+
+.roundProfileDiv{
+    border-radius: 50%;
+}
+

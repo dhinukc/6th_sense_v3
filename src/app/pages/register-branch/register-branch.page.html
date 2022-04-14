@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Register new branch</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer">
+
+  <section class="container">
+
+    <section class="taskHeaderSection">
+      <ion-label class="lblTask">Branch details</ion-label>
+    </section>
+
+    <ion-card class="baseDetailcard">
+      <ion-item class="inputItem">
+        <ion-label position="floating">Branch name</ion-label>
+        <ion-input placeholder="Enter branch name" class="input" [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <!-- <ion-item class="inputItem">
+        <ion-label position="floating">Address 1</ion-label>
+        <ion-input placeholder="Enter address line 1" class="input"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Address 2</ion-label>
+        <ion-input placeholder="Enter address line 2" class="input"></ion-input>
+      </ion-item> -->
+      <ion-item class="inputItem">
+        <ion-label position="floating">City</ion-label>
+        <ion-input placeholder="Enter city" class="input" [(ngModel)]="city"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">State</ion-label>
+        <ion-input placeholder="Enter state" class="input" [(ngModel)]="state"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Country</ion-label>
+        <ion-input placeholder="Enter country" class="input" [(ngModel)]="country"></ion-input>
+      </ion-item>
+      <ion-item class="inputItem">
+        <ion-label position="floating">Pin code</ion-label>
+        <ion-input placeholder="Enter pin code" class="input" [(ngModel)]="pincode"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <section class="btnContainer">
+      <ion-button shape="round" class="btnSubmit" (click)="register()">Create</ion-button>
+    </section>
+
+
+  </section>
+
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{branch_name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="createMachine()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer">
+  <section class="nnoDatasection" *ngIf="machineList.length == 0">
+    <div class="noDataContainer" (click)="createMachine()">
+      <ion-label class="lblOops">Oops! Machine are not yet added</ion-label>
+      <ion-label class="lblNoDataInstruction">Click here to add machines or click on top right corner</ion-label>
+      <ion-label class="lblAddMachine">
+        <ion-icon name="add" class="icNoDataAdd"></ion-icon>
+        Add new machine
+      </ion-label>
+    </div>
+  </section>
+  <section class="container" *ngIf="machineList.length != 0">
+    <ion-label class="lblBranches">Machines</ion-label>
+    <ion-label class="instruction1">Click on the QR Code to download it</ion-label>
+    <ion-card class="machineCard" *ngFor="let mc of machineList">
+      <section class="cardLeftSection">
+        <ion-label class="lblHeading">Machine Id: <ion-icon name="create" class="icBranchEdit"
+            (click)="editMachine(mc)"></ion-icon>
+            <ion-icon name="refresh" class="icBranchEdit"
+            (click)="history(mc)"></ion-icon>
+        </ion-label>
+        <ion-label class="lblMachineId">{{mc.machine_static_id}}{{mc.middle_zeros}}{{mc.machine_id}} </ion-label>
+
+        <ion-label class="lblHeading2">Total Capacity:</ion-label>
+        <ion-label class="lblMachineId">{{mc.capacity}} Products</ion-label>
+
+      </section>
+      <section class="cardRightSection">
+        <ngx-qrcode qrc-value="{machine_id: {{mc.machine_id}} }" qrc-class="aclass" qrc-errorCorrectionLevel="H"
+          id="canvas" [qrc-element-type]='elementType' (click)='popup($event, mc)'></ngx-qrcode>
+        <!-- <ion-button shape="round" (click)="downloadQR()"><ion-icon name="download"></ion-icon> Download</ion-button> -->
+      </section>
+
+      <!-- <section class="historySection">
+        <ion-label class="lblHistory">History</ion-label>
+        <ion-icon name="refresh" class="icRefresh"></ion-icon>
+      </section> -->
+    </ion-card>
+    <ion-label class="lblAddNewBranch" (click)="createMachine()">
+      <ion-icon name="add" class="iconAdd"></ion-icon> Add new machine
+    </ion-label>
+  </section>
+</ion-content>

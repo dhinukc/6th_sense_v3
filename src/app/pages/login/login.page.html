@@ -1,0 +1,50 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="mainContainer" scroll='false' fullscreen>
+
+  <section class="container">
+    <section class="headerSection">
+      <img src="../../assets/img/logo2.png" class="imgJP">
+      <!-- <ion-label class="lblJP">SUR<span class="f">f</span>ON</ion-label> -->
+      <img class="bgImage" src="../../../assets/img/bg2.png">
+    </section>
+
+    <section class="SlideContainer">
+      <ion-card class="cardContainer">
+
+        <section class="scanBtnContainer">
+          <ion-label class="lblInstruction">Login as Admin</ion-label>
+        </section>
+
+        <section class="inputContainer">
+          <ion-item class="itemUsername">
+            <ion-label position="floating">Username</ion-label>
+            <ion-input class="input" placeholder="Enter username" autofocus="true" [(ngModel)]="username"></ion-input>
+          </ion-item>
+
+          <ion-item class="itemPassword">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input class="input" placeholder="Enter password" [(ngModel)]="password" type="password"></ion-input>
+          </ion-item>
+        </section>
+
+        <ion-label class="lblForgotPswd">Forgot password ?</ion-label>
+
+        <ion-button shape="round" class="loginBtn" (click)="login()">Login</ion-button>
+      </ion-card>
+
+    </section>
+
+
+  </section>
+
+</ion-content>

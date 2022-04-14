@@ -1,0 +1,47 @@
+.mainContainer {
+    --background: #EFF2F5;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.taskHeaderSection {
+    padding-top: 20px;
+}
+
+.baseDetailcard {
+    padding: 15px;
+    margin: 0px;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    //background-image: url(../../../assets/img/bg2.png);
+    //background-size: cover;
+    //background-repeat: no-repeat;
+}
+
+.inputItem {
+    --padding-start: 0px;
+    margin-bottom: 20px;
+    --background: transparent;
+}
+
+.input {
+    font-size: 14px;
+}
+
+.btnContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.btnSubmit {
+    margin-top: 30px;
+    width: 80%;
+}
