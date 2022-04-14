@@ -55,9 +55,9 @@ export class WelcomePage implements OnInit {
       this.loader = await this.loadingCtrl.create({
         message: 'Fetching data...'
       });
-      this.loader.present();
+      await this.loader.present();
 
-      let qr_data = this.getJsonData(barcodeData.text);
+      let qr_data = barcodeData.text.length ? this.getJsonData(barcodeData.text) : "";
 
       if (barcodeData.cancelled == true) {
         this.loader.dismiss();
@@ -119,7 +119,7 @@ export class WelcomePage implements OnInit {
     }, err => {
       this.loader.dismiss();
       this.common.displayAlert('Invalid QR Code', 'Please scan a valid QR Code');
-    })
+    });
   }
 
 
