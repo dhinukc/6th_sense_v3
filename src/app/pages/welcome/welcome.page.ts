@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { IonSlides, MenuController, PopoverController, ModalController, NavController, LoadingController, Platform } from '@ionic/angular';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ProfilePopupPage } from 'src/app/popup/profile-popup/profile-popup.page';
 import { Router } from '@angular/router';
-import { WebIntent } from '@ionic-native/web-intent/ngx';
+import { WebIntent } from '@awesome-cordova-plugins/web-intent/ngx';
 import { CommonService } from 'src/app/services/common/common.service';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 

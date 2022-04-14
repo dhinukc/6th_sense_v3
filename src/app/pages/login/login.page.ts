@@ -4,7 +4,7 @@ import { NavController, Platform } from '@ionic/angular';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { CommonService } from 'src/app/services/common/common.service';
 import { Storage } from '@ionic/storage';
-import { HTTP } from '@ionic-native/http/ngx';
+import { HTTP } from '@awesome-cordova-plugins/http/ngx';
 
 @Component({
   selector: 'app-login',

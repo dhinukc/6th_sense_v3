@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { ToastController, ModalController, PopoverController, NavController, Platform } from '@ionic/angular';
 import { DownloadQrPage } from 'src/app/popup/download-qr/download-qr.page';

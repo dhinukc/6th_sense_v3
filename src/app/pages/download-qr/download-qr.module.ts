@@ -8,7 +8,7 @@ import { DownloadQrPageRoutingModule } from './download-qr-routing.module';
 
 import { DownloadQrPage } from './download-qr.page';
 
-import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   imports: [

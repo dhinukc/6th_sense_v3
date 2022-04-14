@@ -3,10 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 import { from } from 'rxjs';
-import { File } from '@ionic-native/file/ngx';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { Diagnostic } from '@ionic-native/diagnostic/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
 
 @Component({
   selector: 'app-download-qr',

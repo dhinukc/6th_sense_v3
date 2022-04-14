@@ -3,7 +3,7 @@ import { NavController, AlertController, Platform } from '@ionic/angular';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { CommonService } from 'src/app/services/common/common.service';
 import { ActivatedRoute } from '@angular/router';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 
 @Component({
   selector: 'app-edit-branch',

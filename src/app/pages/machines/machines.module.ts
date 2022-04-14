@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MachinesPageRoutingModule } from './machines-routing.module';
 
 import { MachinesPage } from './machines.page';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { DownloadQrPage } from 'src/app/popup/download-qr/download-qr.page';
 
 
