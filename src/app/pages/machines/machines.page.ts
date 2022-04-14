@@ -6,6 +6,7 @@ import { DownloadQrPage } from 'src/app/popup/download-qr/download-qr.page';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { HttpServiceService } from 'src/app/services/http-service.service';
 import { CommonService } from 'src/app/services/common/common.service';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 
 @Component({
   selector: 'app-machines',
@@ -17,7 +18,7 @@ export class MachinesPage implements OnInit {
   machineList: Machine[] = [];
 
   //QRValue = "";
-  elementType = 'canvas';
+  elementType = NgxQrcodeElementTypes.CANVAS;
 
   client_id = '';
   branch_id = '';
@@ -27,6 +28,7 @@ export class MachinesPage implements OnInit {
   vpa = '';
   vpa_status = 0;
   vpa_name = '';
+  qrCodeCorrectionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
 
   constructor(

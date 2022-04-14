@@ -40,8 +40,8 @@
 
       </section>
       <section class="cardRightSection">
-        <ngx-qrcode qrc-value="{machine_id: {{mc.machine_id}} }" qrc-class="aclass" qrc-errorCorrectionLevel="H"
-          id="canvas" [qrc-element-type]='elementType' (click)='popup($event, mc)'></ngx-qrcode>
+        <ngx-qrcode value="{machine_id: {{mc.machine_id}} }" cssClass="aclass" [errorCorrectionLevel]="qrCodeCorrectionLevel"
+          id="canvas" [elementType]='elementType' (click)='popup($event, mc)'></ngx-qrcode>
         <!-- <ion-button shape="round" (click)="downloadQR()"><ion-icon name="download"></ion-icon> Download</ion-button> -->
       </section>
 

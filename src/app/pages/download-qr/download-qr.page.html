@@ -11,7 +11,7 @@
   <section class="container">
     <section class="merchatContainer">
       <div class="leftDiv">
-        <ion-radio checked="{{vpa_radio}}" (ionSelect)="selectMerchantOption('vpa')"></ion-radio>
+        <ion-radio value="{{vpa_radio}}" (ionSelect)="selectMerchantOption('vpa')"></ion-radio>
       </div>
       <div class="rightDiv">
         <ion-item>
@@ -22,7 +22,7 @@
 
     <section class="merchatContainer">
       <div class="leftDiv">
-        <ion-radio checked="{{custome_vpa_radio}}" (ionSelect)="selectMerchantOption('custome_vpa')"></ion-radio>
+        <ion-radio value="{{custome_vpa_radio}}" (ionSelect)="selectMerchantOption('custome_vpa')"></ion-radio>
       </div>
       <div class="rightDiv">
         <ion-item>
@@ -33,8 +33,8 @@
 
     <ion-label class="lblInstrauction">Please give 'Storage' permission in app settings if it's not granded already to download QR code</ion-label>
 
-    <ngx-qrcode [qrc-value]="qr_value" qrc-class="bclass" qrc-errorCorrectionLevel="H" id="canvas"
-      [qrc-element-type]='elementType'></ngx-qrcode>
+    <ngx-qrcode [value]="qr_value" cssClass="bclass" [errorCorrectionLevel]="qrCodeCorrectionLevel" id="canvas"
+      [elementType]='elementType'></ngx-qrcode>
 
     <ion-button class="downloadBtn" shape="round" (click)="downloadQR()">
       <ion-icon name="download" class="icDownload"></ion-icon>

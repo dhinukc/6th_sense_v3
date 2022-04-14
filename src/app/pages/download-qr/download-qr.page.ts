@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 
 @Component({
   selector: 'app-download-qr',
@@ -29,7 +30,8 @@ export class DownloadQrPage implements OnInit {
   middleZeros = '';
 
   qr_value = '';
-  elementType = 'canvas';
+  elementType = NgxQrcodeElementTypes.CANVAS;
+  qrCodeCorrectionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
 
   vpa_radio = true;
   custome_vpa_radio = false;
