@@ -1,0 +1,7 @@
+{
+  "name": "6th_sense_v3",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
