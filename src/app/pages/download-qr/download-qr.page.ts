@@ -35,6 +35,7 @@ export class DownloadQrPage implements OnInit {
 
   vpa_radio = true;
   custome_vpa_radio = false;
+  selected_mode: 'vpa' | 'custome_vpa' = 'vpa';
 
   constructor(public router: ActivatedRoute,
     public navCtrl: NavController,
@@ -84,73 +85,80 @@ export class DownloadQrPage implements OnInit {
     let data = imageData.split(',')[1];
     //console.log(data);
 
-    let blob = this.b64toBlob(data, 'image/png');
+    //let blob = this.b64toBlob(data, 'image/png');
 
-
-    // this.base64ToGallery.base64ToGallery(data,
-    //   { prefix: this.machine_id, mediaScanner: true })
-    //   .then(async res => {
-    //     let toast = await this.toastCtrl.create({
-    //       header: "QR Code save in your photogallery",
-    //       duration: 5000
-    //     });
-    //     toast.present();
-    //   }, err => alert('error: ' + err)
-    //   )
-
-    this.file.checkDir(this.file.externalApplicationStorageDirectory, 'Surfone')
-        .then(_ => {
-          this.file.writeFile(this.file.externalApplicationStorageDirectory + 'Surfone/', this.machine_id + '.png', blob).then(async response => {
-            // ACTION
-            alert(typeof response == "object" ? JSON.stringify(response) : response);
-            let toast = await this.toastCtrl.create({
-              header: "QR Code save in your photogallery",
-              duration: 5000
-            });
-            toast.present();
-            this.download(response.nativeURL);
-          }).catch(err => {
-            // ACTION
-            this.file.removeFile(this.file.externalApplicationStorageDirectory + 'Surfone/', this.machine_id + '.png').then(()=> {
-              this.downloadQR();
-            })
-            //alert(typeof err == 'object' ? JSON.stringify(err) : err);
-          })
-        })
-        .catch(err => {
-          this.file.createDir(this.file.externalApplicationStorageDirectory, 'Surfone', false).then(result => {
-            this.file.writeFile(this.file.externalApplicationStorageDirectory + 'Surfone/', this.machine_id + '.png', blob).then(async response => {
-              // ACTION
+      this.permission.checkPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE).then((res) => {
+        if (res.hasPermission) {
+          this.base64ToGallery.base64ToGallery(data,
+            { prefix: this.machine_id, mediaScanner: true })
+            .then(async res => {
               let toast = await this.toastCtrl.create({
                 header: "QR Code save in your photogallery",
                 duration: 5000
               });
               toast.present();
-            }).catch(err => {
-              // ACTION
-            })
-          })
-        });
+            });
+        } else {
+          this.permission.requestPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE);
+        }
+      }, err => {
+        this.permission.requestPermissions([this.permission.PERMISSION.READ_EXTERNAL_STORAGE, this.permission.PERMISSION.WRITE_EXTERNAL_STORAGE]);
+      })
 
-   
-    
+    // alert(this.file.externalRootDirectory)
+    // this.file.checkDir(this.file.externalRootDirectory, 'Surfone')
+    //     .then(_ => {
+    //       this.file.writeFile(this.file.externalRootDirectory + 'Surfone/', this.machine_id + '.png', blob).then(async response => {
+    //         // ACTION
+    //         alert(typeof response == "object" ? JSON.stringify(response) : response);
+    //         let toast = await this.toastCtrl.create({
+    //           header: "QR Code saved in your photogallery",
+    //           duration: 5000
+    //         });
+    //         toast.present();
+    //        // this.download(response.nativeURL);
+    //       }).catch(err => {
+    //         // ACTION
+    //         this.file.removeFile(this.file.externalRootDirectory + 'Surfone/', this.machine_id + '.png').then(()=> {
+    //           this.downloadQR();
+    //         })
+    //         //alert(typeof err == 'object' ? JSON.stringify(err) : err);
+    //       })
+    //     })
+    //     .catch(err => {
+    //       this.file.createDir(this.file.externalRootDirectory, 'Surfone', false).then(result => {
+    //         this.file.writeFile(this.file.externalRootDirectory + 'Surfone/', this.machine_id + '.png', blob).then(async response => {
+    //           // ACTION
+    //           let toast = await this.toastCtrl.create({
+    //             header: "QR Code save in your photogallery",
+    //             duration: 5000
+    //           });
+    //           toast.present();
+    //         }).catch(err => {
+    //           // ACTION
+    //         })
+    //       })
+    //     });
+
+
+
   }
 
-  download(imageLocation){
-    this.permission.checkPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE).then((res)=> {
-      if(res.hasPermission) {
-        this.fileTransfer.create().download(imageLocation, this.file.externalRootDirectory).then((entry)=> {
-          alert(entry)
-        }).catch(err=> {
-          alert(typeof err == "object" ? JSON.stringify(err) : err);
-        })
-      }else {
+  download() {
+    this.permission.checkPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE).then((res) => {
+      if (res.hasPermission) {
+        // this.fileTransfer.create().download(imageLocation, this.file.externalRootDirectory).then((entry)=> {
+        //   alert(entry)
+        // }).catch(err=> {
+        //   alert(typeof err == "object" ? JSON.stringify(err) : err);
+        // })
+      } else {
         this.permission.requestPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE);
       }
     }, err => {
       this.permission.requestPermissions([this.permission.PERMISSION.READ_EXTERNAL_STORAGE, this.permission.PERMISSION.WRITE_EXTERNAL_STORAGE]);
     })
-    
+
   }
 
 
@@ -173,7 +181,7 @@ export class DownloadQrPage implements OnInit {
       byteArrays.push(byteArray);
     }
 
-    var blob = new Blob(byteArrays, {type: contentType});
+    var blob = new Blob(byteArrays, { type: contentType });
     return blob;
   }
 
