@@ -7,7 +7,11 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 import { FileTransfer } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+import { saveAs } from 'file-saver';
+import { PhotoLibrary } from '@awesome-cordova-plugins/photo-library/ngx';
+import { CommonService } from 'src/app/services/common/common.service';
 
+declare var cordova;
 @Component({
   selector: 'app-download-qr',
   templateUrl: './download-qr.page.html',
@@ -43,7 +47,9 @@ export class DownloadQrPage implements OnInit {
     public toastCtrl: ToastController,
     private file: File,
     private permission: AndroidPermissions,
-    private fileTransfer: FileTransfer) {
+    private fileTransfer: FileTransfer,
+    private photoLibrary: PhotoLibrary,
+    private commonService: CommonService) {
 
     this.router.queryParams.subscribe(params => {
       this.client_id = params['client_id'];
@@ -78,87 +84,27 @@ export class DownloadQrPage implements OnInit {
 
     const element = document.getElementById('canvas');
     const canvas = element.querySelector('canvas') as HTMLCanvasElement;
-    const imageData = canvas.toDataURL('image/png').toString();
+    const imageData = canvas.toDataURL('image/png');
+    //const imageDataString = canvas.toDataURL('image/png').toString();
+    //const base64 = this.getBase64Image(document.getElementById('canvas'));
 
-    //console.log(imageData);
-
-    let data = imageData.split(',')[1];
-    //console.log(data);
-
-    //let blob = this.b64toBlob(data, 'image/png');
-
-      this.permission.checkPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE).then((res) => {
-        if (res.hasPermission) {
-          this.base64ToGallery.base64ToGallery(data,
-            { prefix: this.machine_id, mediaScanner: true })
-            .then(async res => {
-              let toast = await this.toastCtrl.create({
-                header: "QR Code save in your photogallery",
-                duration: 5000
-              });
-              toast.present();
-            });
-        } else {
-          this.permission.requestPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE);
-        }
-      }, err => {
-        this.permission.requestPermissions([this.permission.PERMISSION.READ_EXTERNAL_STORAGE, this.permission.PERMISSION.WRITE_EXTERNAL_STORAGE]);
+    this.photoLibrary.requestAuthorization({ read: true, write: true }).then(() => {
+      this.photoLibrary.saveImage(imageData, this.machine_id).then(async(success) => {
+        this.commonService.displayToast("Image saved to your photo library");
+      }, (err) => {
+        //alert(`Error ----> ${typeof err == "object" ? JSON.stringify(err) : err}`);
       })
-
-    // alert(this.file.externalRootDirectory)
-    // this.file.checkDir(this.file.externalRootDirectory, 'Surfone')
-    //     .then(_ => {
-    //       this.file.writeFile(this.file.externalRootDirectory + 'Surfone/', this.machine_id + '.png', blob).then(async response => {
-    //         // ACTION
-    //         alert(typeof response == "object" ? JSON.stringify(response) : response);
-    //         let toast = await this.toastCtrl.create({
-    //           header: "QR Code saved in your photogallery",
-    //           duration: 5000
-    //         });
-    //         toast.present();
-    //        // this.download(response.nativeURL);
-    //       }).catch(err => {
-    //         // ACTION
-    //         this.file.removeFile(this.file.externalRootDirectory + 'Surfone/', this.machine_id + '.png').then(()=> {
-    //           this.downloadQR();
-    //         })
-    //         //alert(typeof err == 'object' ? JSON.stringify(err) : err);
-    //       })
-    //     })
-    //     .catch(err => {
-    //       this.file.createDir(this.file.externalRootDirectory, 'Surfone', false).then(result => {
-    //         this.file.writeFile(this.file.externalRootDirectory + 'Surfone/', this.machine_id + '.png', blob).then(async response => {
-    //           // ACTION
-    //           let toast = await this.toastCtrl.create({
-    //             header: "QR Code save in your photogallery",
-    //             duration: 5000
-    //           });
-    //           toast.present();
-    //         }).catch(err => {
-    //           // ACTION
-    //         })
-    //       })
-    //     });
-
-
-
+    });
   }
 
-  download() {
-    this.permission.checkPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE).then((res) => {
-      if (res.hasPermission) {
-        // this.fileTransfer.create().download(imageLocation, this.file.externalRootDirectory).then((entry)=> {
-        //   alert(entry)
-        // }).catch(err=> {
-        //   alert(typeof err == "object" ? JSON.stringify(err) : err);
-        // })
-      } else {
-        this.permission.requestPermission(this.permission.PERMISSION.READ_EXTERNAL_STORAGE);
-      }
-    }, err => {
-      this.permission.requestPermissions([this.permission.PERMISSION.READ_EXTERNAL_STORAGE, this.permission.PERMISSION.WRITE_EXTERNAL_STORAGE]);
-    })
-
+  getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 
 

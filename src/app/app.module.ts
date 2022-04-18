@@ -30,6 +30,7 @@ import { File } from '@awesome-cordova-plugins/file/ngx';
 import { FileTransfer, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 import { Diagnostic } from '@awesome-cordova-plugins/diagnostic/ngx';
+import { PhotoLibrary } from '@awesome-cordova-plugins/photo-library/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -53,7 +54,8 @@ import { Diagnostic } from '@awesome-cordova-plugins/diagnostic/ngx';
     AndroidPermissions,
     Diagnostic,
     FileTransfer,
-    FileTransferObject
+    FileTransferObject,
+    PhotoLibrary
   ],
   bootstrap: [AppComponent]
 })

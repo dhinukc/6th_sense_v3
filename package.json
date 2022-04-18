@@ -25,6 +25,7 @@
     "@awesome-cordova-plugins/file": "^5.41.0",
     "@awesome-cordova-plugins/file-transfer": "^5.41.0",
     "@awesome-cordova-plugins/http": "^5.41.0",
+    "@awesome-cordova-plugins/photo-library": "^5.41.0",
     "@awesome-cordova-plugins/splash-screen": "^5.41.0",
     "@awesome-cordova-plugins/status-bar": "^5.41.0",
     "@awesome-cordova-plugins/web-intent": "^5.41.0",
@@ -64,6 +65,7 @@
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^5.0.0",
+    "cordova-plugin-photo-library": "^2.3.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova.plugins.diagnostic": "^6.1.1",
@@ -106,7 +108,10 @@
       },
       "cordova-plugin-device": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-photo-library": {
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
+      }
     },
     "platforms": [
       "android"
